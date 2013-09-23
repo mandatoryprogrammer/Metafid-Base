@@ -1,7 +1,9 @@
 Metafid-Base
 ============
 
-This is a repo for the base classes that are utilized by the Metafid coder generator.
+This is a repo for the base classes that are utilized by the Metafid coder generator. 
+
+The base classes are not allowed to be used commercially without express written consent from the creator.
 
 Metafid Description
 ============

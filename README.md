@@ -14,7 +14,7 @@ Metafid works in the following way:
 
 2. A Fiddler archive file is exported from the recorded web requests
 
-2. This file is imported into Metafid which intelligently creates code to replicate the web actions preformed.
+2. This file is imported into Metafid which intelligently creates code to replicate the web actions preformed. This is where the Metafid Base Classes are used. The base classes are used to make PHP's cURL functions object orientated and to allow scalable patches for any of Metafid's created programs (in the case of a bug in the base classes).
 
 3. Changes are made to the code depending on need, Metafid provides an IDE environment to easy do things like HTML parsing, cookie clearing, user-agent changing, etc.
 

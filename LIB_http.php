@@ -708,19 +708,26 @@ class http_request
 	public function set_cookie_file($filename) // File to save/read cookies to
 	{
 		try {
-			// Test to see if writing to files is possible in this directory
-			file_put_contents($filename, "TEST DATA WRITE");
-			$filecontents = file_get_contents($filename);
-			if($filecontents = "TEST DATA WRITE")
-			{
-				$cookieFile = $filename; // Set the global variable now
-				file_put_contents($cookieFile, "");
-				curl_setopt($this->ch, CURLOPT_COOKIEJAR, $cookieFile); // File to save cookies in
-				curl_setopt($this->ch, CURLOPT_COOKIEFILE, $cookieFile); // File to read cookies from
-				return TRUE;
-			}
+			curl_setopt($this->ch, CURLOPT_COOKIEJAR, $cookieFile); // File to save cookies in
+			curl_setopt($this->ch, CURLOPT_COOKIEFILE, $cookieFile); // File to read cookies from
+			return TRUE;
 		} catch (Exception $e) {
 			throw new Exception("Error: An error occured while setting the cookie file!\n", 0, $e);
+			return FALSE;
+		}
+	}
+
+	public function set_cookie_value($cookie_name, $new_cookie_value)
+	{
+		try {
+			// Should be modified later, for now this will do
+			$cookie_file_String = file_get_contents($this->cookieFile);
+			$value_to_replace = $this->return_between($cookie_file_String, $cookie_name."\t", "\n", FALSE);
+			$cookie_file_String = str_replace($value_to_replace, $new_cookie_value, $cookie_file_String);
+			file_put_contents($this->cookieFile, $cookie_file_String);
+			return TRUE;
+		} catch (Exception $e) {
+			throw new Exception("Error: An error occured while modifying the cookie file\n", 0, $e);
 			return FALSE;
 		}
 	}
@@ -763,6 +770,37 @@ class http_request
 			throw new Exception("Error: An error occured while setting the request headers!\n", 0, $e);
 			return FALSE;
 		}
+	}
+
+	public function return_between($input, $start_tag, $end_tag, $keep_tags = FALSE) // included for cookie parsing functions
+	{
+		$start_pos = strpos($input, $start_tag);
+		
+		if($start_pos != FALSE)
+		{
+			if(!$keep_tags)
+			{
+				$tmp_String = substr($input, ($start_pos + strlen($start_tag)));
+			} else {
+				$tmp_String = substr($input, $start_pos);
+			}
+
+			$end_pos = strpos($tmp_String, $end_tag);
+			
+			if($end_pos != FALSE)
+			{
+				if(!$keep_tags)
+				{
+					return substr($tmp_String, 0, $end_pos);
+				} else {
+					return substr($tmp_String, 0, ($end_pos + strlen($end_tag)));
+				}
+			} else {
+				return "";
+			}
+		} else {
+			return "";
+		}	
 	}
 }
 

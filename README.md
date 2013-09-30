@@ -22,8 +22,19 @@ Metafid works in the following way:
 
 4. The project is exported for production use.
 
+Screenshots
+============
 
+[Main Page](http://i.imgur.com/QXC5N4U.png)
 
+[Project Page](http://i.imgur.com/YoMpxLX.png)
+
+[Static POST Code](http://i.imgur.com/yzpX1NX.png) -> [When Dynamic POST is Applied](http://i.imgur.com/68xz3cs.png)
+
+[Example of IDE Code Adder](http://i.imgur.com/fMlktqT.png)
+
+Disclaimer
+============
 While the Metafid-Base is released under a GPLv3 license, the code generating part of Metafid is not open source, or available to the public in any way. 
 
 

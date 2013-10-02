@@ -25,13 +25,15 @@ Metafid works in the following way:
 Screenshots
 ============
 
-[Main Page](http://i.imgur.com/QXC5N4U.png)
+![Main Page](http://i.imgur.com/QXC5N4U.png)
 
-[Project Page](http://i.imgur.com/YoMpxLX.png)
+![Project Page](http://i.imgur.com/YoMpxLX.png)
 
-[Static POST Code](http://i.imgur.com/yzpX1NX.png) -> [When Dynamic POST is Applied](http://i.imgur.com/68xz3cs.png)
+![Static POST Code](http://i.imgur.com/yzpX1NX.png)
 
-[Example of IDE Code Adder](http://i.imgur.com/fMlktqT.png)
+![After Dynamic POST is Applied](http://i.imgur.com/68xz3cs.png)
+
+![Example of IDE Code Adder](http://i.imgur.com/fMlktqT.png)
 
 Disclaimer
 ============

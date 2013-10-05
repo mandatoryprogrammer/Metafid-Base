@@ -1,4 +1,5 @@
 <?php
+
 class http_parse
 {
 	/*
@@ -22,6 +23,12 @@ class http_parse
 	
 	public function return_between($input, $start_tag, $end_tag, $keep_tags = FALSE)
 	{
+		// Legacy code for older versions of Metafid
+		if($keep_tags === "FALSE")
+			$keep_tags = false;
+		if($keep_tags === "TRUE")
+			$keep_tags = true;
+
 		$start_pos = strpos($input, $start_tag);
 		
 		if($start_pos != FALSE)
@@ -65,17 +72,23 @@ class http_parse
 	*/
 	public function parse_html($string, $start_tag, $end_tag, $keep_tags = FALSE)
 	{
-			$start_tag = preg_quote($start_tag);
-			$end_tag = preg_quote($end_tag);
-			preg_match_all("($start_tag(.*)$end_tag)siU", $string, $matching_data);
-			
-			$matching_data = $matching_data[1];
-			
-			foreach ($matching_data as $value) {
-				$value = $this->return_between($value, $start_tag, $end_tag, "TRUE");
-			}
-			
-			return $matching_data;
+		// Legacy code for older versions of Metafid
+		if($keep_tags === "FALSE")
+			$keep_tags = false;
+		if($keep_tags === "TRUE")
+			$keep_tags = true;
+		
+		$start_tag = preg_quote($start_tag);
+		$end_tag = preg_quote($end_tag);
+		preg_match_all("($start_tag(.*)$end_tag)siU", $string, $matching_data);
+		
+		$matching_data = $matching_data[1];
+		
+		foreach ($matching_data as $value) {
+			$value = $this->return_between($value, $start_tag, $end_tag, "TRUE");
+		}
+		
+		return $matching_data;
 	}
 
 	/*
